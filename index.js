@@ -1,41 +1,58 @@
-ppc=0
-pu=0
-juegos=+prompt("cuantas veces quiere jugar");
-for(let i=0;i<juegos;i++){
-    e=+prompt(`elije una opcion: 1:piedra  2:papel  3:tijera`)
-    if(e==1){
-        pc=Math.floor(Math.random() * 3)+1
-        if(pc==2){
-            alert("winer pc")
-            ppc++
-        }
-        else if(pc==1){
-            alert("empate")
-        }
-        else{
-            alert("winer usuario")
-            pu++
-        }
+function eleccionpc(){
+    pc=Math.floor(Math.random()*3)+1   
+}
+function ganador(){
+    if(pu>ppc){
+        alert("el ganador es el usuario") 
     }
-    else if(e=2){
-        pc=Math.floor(Math.random() * 3)+1
-        if(pc==2){
-            alert("empate")
-            
-        }
-        else if(pc==1){
-
-            alert("winer usuario")
-            pu++
-        }
-        else{
-            alert("winer pc")
-            ppc++
-        }
-
+    else if(pu<ppc){
+        alert("el ganador es el pc")
     }
     else{
-        pc=Math.floor(Math.random()*3)+1
+        alert("es un empate")
+    }
+}
+function puntos(){
+    alert(`los puntos del usuario son ${pu} y los del pc son ${ppc}`)
+}
+function usuariopiedra(){
+    if(e==1){
+        eleccionpc()
+        if(pc==2){
+            alert("winer pc")
+            ppc++
+        }
+        else if(pc==1){
+            alert("empate")
+        }
+        else{
+            alert("winer usuario")
+            pu++
+        }
+    }
+}
+function usuariopapel(){
+    if(e=2){
+        eleccionpc()
+        if(pc==2){
+            alert("empate")
+            
+        }
+        else if(pc==1){
+
+            alert("winer usuario")
+            pu++
+        }
+        else{
+            alert("winer pc")
+            ppc++
+        }
+
+    }
+}
+function usuariotijera(){
+    if(e=3){
+        eleccionpc()
         if(pc==2){
             alert("winer usuario")
             pu++
@@ -54,16 +71,29 @@ for(let i=0;i<juegos;i++){
     }
 
 }
-alert(`los puntos del usuario son ${pu} y los del pc son ${ppc}`)
-if(pu>ppc){
-    alert("el ganador es el usuario") 
+function elegir(){
+    e=+prompt(`elije una opcion: 1:piedra  2:papel  3:tijera`)
 }
-else if(pu<ppc){
-    alert("el ganador es el pc")
+function cantidadjuegos(){
+    juegos=+prompt("cuantas veces quiere jugar");
 }
-else{
-    alert("es un empate")
+ppc=0
+pu=0
+cantidadjuegos()
+for(let i=0;i<juegos;i++){
+    elegir()
+    if(e==1){
+        usuariopiedra()
+    }
+    else if(e==2){
+        usuariopapel()
+    }
+    else{
+        usuariotijera()
+    }
 }
+puntos()
+ganador()
 
 
 
